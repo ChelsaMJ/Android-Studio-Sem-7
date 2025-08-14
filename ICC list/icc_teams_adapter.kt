@@ -1,12 +1,15 @@
 package com.example.unit1
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import kotlin.jvm.java
 
 class icc_teams_adapter(
     private val context: Context,
@@ -30,6 +33,24 @@ class icc_teams_adapter(
         textTeamName.text = team.name
         textTeamInfo.text = team.info
 
+        // Click listener with PendingIntent
+        view.setOnClickListener {
+            val intent = Intent(context, icc_team_details::class.java).apply {
+                putExtra("imageResId", team.imageResId)
+                putExtra("name", team.name)
+                putExtra("info", team.info)
+            }
+
+            val pendingIntent = PendingIntent.getActivity(
+                context,
+                position, // unique request code
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            pendingIntent.send() // triggers the intent
+        }
+
         return view
     }
+
 }
