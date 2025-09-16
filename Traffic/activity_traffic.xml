@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/black">
+
+    <!-- Red Box -->
+    <FrameLayout
+        android:id="@+id/redBox"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <!-- Image behind red box -->
+        <ImageView
+            android:id="@+id/redImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/red_bg_img" />
+
+        <!-- Overlay color (translucent) -->
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#88FF0000" />
+
+        <!-- Red circle button -->
+        <Button
+            android:id="@+id/redBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"/>
+
+    </FrameLayout>
+
+    <!-- Yellow Box -->
+    <FrameLayout
+        android:id="@+id/yellowBox"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <!-- Image behind yellow box -->
+        <ImageView
+            android:id="@+id/yellowImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/yellow_bg_img" />
+
+        <!-- Overlay color -->
+        <View
+            android:id="@+id/yellowOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#88FFFF00" />
+
+        <!-- Yellow circle button -->
+        <Button
+            android:id="@+id/yellowBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"/>
+
+    </FrameLayout>
+
+    <!-- Green Box -->
+    <FrameLayout
+        android:id="@+id/greenBox"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <!-- Image behind green box -->
+        <ImageView
+            android:id="@+id/greenImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/green_bg_img" />
+
+        <!-- Overlay color -->
+        <View
+            android:id="@+id/greenOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8800FF00" />
+
+        <!-- Green circle button -->
+        <Button
+            android:id="@+id/greenBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"/>
+
+    </FrameLayout>
+
+</LinearLayout>
