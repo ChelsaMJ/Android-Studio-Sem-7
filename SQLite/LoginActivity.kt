@@ -40,5 +40,26 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+
+
+        btnLogin.setOnClickListener {
+            val usernameOrPhone = etUsername.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+
+            if (usernameOrPhone.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
+            } else {
+                val valid = dbHelper.checkUser(usernameOrPhone, password) ||
+                        dbHelper.checkUserByPhone(usernameOrPhone, password)
+
+                if (valid) {
+                    Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+                    // startActivity(Intent(this, HomeActivity::class.java)) // navigate if needed
+                } else {
+                    Toast.makeText(this, "Invalid credentials!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
     }
 }
