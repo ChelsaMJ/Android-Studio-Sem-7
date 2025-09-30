@@ -10,11 +10,12 @@ class UserDatabaseHelper(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "UserDB.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2   // bump version so onUpgrade triggers
         private const val TABLE_USERS = "users"
         private const val COLUMN_ID = "id"
         private const val COLUMN_USERNAME = "username"
         private const val COLUMN_PASSWORD = "password"
+        private const val COLUMN_PHONE = "phone"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -22,7 +23,8 @@ class UserDatabaseHelper(context: Context) :
             CREATE TABLE $TABLE_USERS (
                 $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_USERNAME TEXT UNIQUE,
-                $COLUMN_PASSWORD TEXT
+                $COLUMN_PASSWORD TEXT,
+                $COLUMN_PHONE TEXT
             )
         """.trimIndent()
         db.execSQL(createTable)
@@ -33,11 +35,12 @@ class UserDatabaseHelper(context: Context) :
         onCreate(db)
     }
 
-    fun addUser(username: String, password: String): Boolean {
+    fun addUser(username: String, password: String, phone: String): Boolean {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_USERNAME, username)
             put(COLUMN_PASSWORD, password)
+            put(COLUMN_PHONE, phone)
         }
         val result = db.insert(TABLE_USERS, null, values)
         db.close()
@@ -55,4 +58,17 @@ class UserDatabaseHelper(context: Context) :
         db.close()
         return exists
     }
+
+    fun checkUserByPhone(phone: String, password: String): Boolean {
+        val db = readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM $TABLE_USERS WHERE $COLUMN_PHONE = ? AND $COLUMN_PASSWORD = ?",
+            arrayOf(phone, password)
+        )
+        val exists = cursor.count > 0
+        cursor.close()
+        db.close()
+        return exists
+    }
+
 }
