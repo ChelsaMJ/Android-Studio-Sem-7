@@ -7,11 +7,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"/>
+        android:hint="Username or Phone Number"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:hint="Password"
         android:inputType="textPassword"/>
+
 
     <Button
         android:id="@+id/btnLogin"
