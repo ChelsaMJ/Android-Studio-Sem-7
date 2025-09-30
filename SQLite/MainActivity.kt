@@ -16,25 +16,24 @@ class MainActivity : AppCompatActivity() {
         dbHelper = UserDatabaseHelper(this)
         val etUsername = findViewById<EditText>(R.id.etUsername)
         val etPassword = findViewById<EditText>(R.id.etPassword)
+        val etPhone = findViewById<EditText>(R.id.etPhone)
+
         val btnSignup = findViewById<Button>(R.id.btnSignup)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
         btnSignup.setOnClickListener {
             val username = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
+            val phone = etPhone.text.toString().trim()
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (username.isEmpty() || password.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
             } else {
-                val success = dbHelper.addUser(username, password)
+                val success = dbHelper.addUser(username, password, phone)
                 if (success) {
                     Toast.makeText(this, "Signup successful!", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Signup failed. Username may already exist.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "Signup failed. Username may already exist.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
