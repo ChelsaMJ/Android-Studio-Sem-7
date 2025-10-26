@@ -39,9 +39,10 @@
         <!-- android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="AIzaSyCpP4cdW1_Ma8ewvyxpVDnYC-JhmbvqBAE" /> &lt;!&ndash;shah's api&ndash;&gt; -->
         <!-- api for maps and places -->
-        <meta-data
+        <!-- <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA885Rsjovh2Lqktb8I-L-Sr9hvCyuFsMs" />
+            android:value="AIzaSyA885Rsjovh2Lqktb8I-L-Sr9hvCyuFsMs" /> -->
     </application>
+
 
 </manifest>
